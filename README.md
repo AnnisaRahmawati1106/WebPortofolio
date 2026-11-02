@@ -1,2 +1,2 @@
 # WebPortofolio
-Ini adalah website simple portofilo
+Ini adalah website sample portofilo
