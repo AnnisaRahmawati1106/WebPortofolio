@@ -1,0 +1,572 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Annisa Rahmawati | Portfolio</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            scroll-behavior: smooth;
+        }
+        :root {
+            --background: #0b1020;
+            --card: #121a30;
+            --white: #f4f6ff;
+            --gray: #aab3ca;
+            --purple: #a78bfa;
+            --blue: #67e8f9;
+        }
+        body {
+            font-family: Arial, sans-serif;
+            background: var(--background);
+            color: var(--white);
+            line-height: 1.7;
+        }
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+        .container {
+            width: 90%;
+            max-width: 1100px;
+            margin: auto;
+        }
+        /* NAVBAR */
+        header {
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            background: rgba(11, 16, 32, 0.95);
+            border-bottom: 1px solid #26304a;
+        }
+        nav {
+            min-height: 75px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .logo {
+            font-size: 24px;
+            font-weight: bold;
+        }
+        .logo span {
+            color: var(--blue);
+        }
+        .nav-links {
+            display: flex;
+            gap: 25px;
+            list-style: none;
+        }
+        .nav-links a {
+            color: var(--gray);
+            transition: 0.3s;
+        }
+        .nav-links a:hover {
+            color: var(--blue);
+        }
+        .menu-btn {
+            display: none;
+            padding: 8px 12px;
+            border: 1px solid #26304a;
+            background: var(--card);
+            color: white;
+            border-radius: 8px;
+            cursor: pointer;
+        }
+        /* BERANDA */
+        .hero {
+            min-height: 85vh;
+            display: grid;
+            grid-template-columns: 1.2fr 0.8fr;
+            gap: 40px;
+            align-items: center;
+            padding-top: 60px;
+            padding-bottom: 60px;
+        }
+        .subtitle {
+            color: var(--blue);
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            font-weight: bold;
+        }
+        h1 {
+            font-size: clamp(38px, 6vw, 70px);
+            line-height: 1.2;
+            margin: 20px 0;
+        }
+        .gradient {
+            background: linear-gradient(
+                90deg,
+                var(--blue),
+                var(--purple)
+            );
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+        .hero p {
+            color: var(--gray);
+            max-width: 600px;
+        }
+        .buttons {
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+            margin-top: 30px;
+        }
+        .button {
+            display: inline-block;
+            padding: 12px 22px;
+            border-radius: 10px;
+            font-weight: bold;
+            transition: 0.3s;
+        }
+        .primary {
+            color: #101426;
+            background: linear-gradient(
+                90deg,
+                var(--blue),
+                var(--purple)
+            );
+        }
+        .secondary {
+            border: 1px solid #39425c;
+        }
+        .button:hover {
+            transform: translateY(-3px);
+        }
+        .profile-card {
+            padding: 35px 20px;
+            border-radius: 25px;
+            border: 1px solid #303952;
+            background: linear-gradient(
+                145deg,
+                rgba(167, 139, 250, 0.15),
+                rgba(103, 232, 249, 0.05)
+            );
+            text-align: center;
+        }
+        .avatar {
+            width: 145px;
+            height: 145px;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 0 auto 20px;
+            background: linear-gradient(
+                135deg,
+                var(--blue),
+                var(--purple)
+            );
+            color: #101426;
+            font-size: 45px;
+            font-weight: bold;
+        }
+        .profile-card p {
+            margin-top: 10px;
+            color: var(--gray);
+        }
+        /* SECTION */
+        section:not(.hero) {
+            padding: 80px 0;
+        }
+        .section-title {
+            margin-bottom: 30px;
+        }
+        .section-title h2 {
+            font-size: 38px;
+            margin: 10px 0;
+        }
+        .section-title p {
+            color: var(--gray);
+        }
+        /* TENTANG SAYA */
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 25px;
+        }
+        .card {
+            padding: 25px;
+            border: 1px solid #303952;
+            border-radius: 18px;
+            background: var(--card);
+        }
+        .card p {
+            color: var(--gray);
+            margin-top: 10px;
+        }
+        .biodata {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+        }
+        .biodata div {
+            padding: 15px;
+            background: rgba(255, 255, 255, 0.04);
+            border-radius: 12px;
+        }
+        .biodata strong {
+            display: block;
+            color: var(--blue);
+            font-size: 13px;
+        }
+        .biodata span {
+            color: var(--gray);
+            font-size: 14px;
+        }
+        /* KEAHLIAN */
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 15px;
+        }
+        .skill {
+            padding: 25px 10px;
+            background: var(--card);
+            border: 1px solid #303952;
+            border-radius: 15px;
+            text-align: center;
+            font-weight: bold;
+            transition: 0.3s;
+        }
+        .skill:hover {
+            transform: translateY(-5px);
+            border-color: var(--blue);
+        }
+        .skill span {
+            display: block;
+            font-size: 30px;
+            margin-bottom: 10px;
+        }
+        /* PROYEK */
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+        }
+        .project {
+            padding: 22px;
+            border-radius: 18px;
+            background: var(--card);
+            border: 1px solid #303952;
+            transition: 0.3s;
+        }
+        .project:hover {
+            transform: translateY(-5px);
+            border-color: var(--blue);
+        }
+        .project-icon {
+            padding: 25px;
+            margin-bottom: 20px;
+            border-radius: 12px;
+            text-align: center;
+            font-size: 40px;
+            background: linear-gradient(
+                135deg,
+                rgba(103, 232, 249, 0.15),
+                rgba(167, 139, 250, 0.2)
+            );
+        }
+        .project p {
+            color: var(--gray);
+            margin-top: 10px;
+            font-size: 14px;
+        }
+        .tag {
+            display: inline-block;
+            margin-top: 15px;
+            padding: 4px 10px;
+            border: 1px solid #303952;
+            border-radius: 20px;
+            color: var(--blue);
+            font-size: 12px;
+        }
+        /* KONTAK */
+        .contact-box {
+            padding: 45px 25px;
+            text-align: center;
+            border: 1px solid #303952;
+            border-radius: 22px;
+            background: linear-gradient(
+                120deg,
+                rgba(167, 139, 250, 0.1),
+                rgba(103, 232, 249, 0.07)
+            );
+        }
+        .contact-box h2 {
+            font-size: 32px;
+            margin: 10px 0;
+        }
+        .contact-box p {
+            color: var(--gray);
+            margin: 15px auto 25px;
+        }
+        /* FOOTER */
+        footer {
+            padding: 25px 0;
+            text-align: center;
+            border-top: 1px solid #26304a;
+            color: var(--gray);
+            font-size: 14px;
+        }
+        /* RESPONSIVE */
+        @media (max-width: 800px) {
+            .hero {
+                grid-template-columns: 1fr;
+                min-height: auto;
+            }
+            .about-grid {
+                grid-template-columns: 1fr;
+            }
+            .skills-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            .projects-grid {
+                grid-template-columns: 1fr;
+            }
+            .menu-btn {
+                display: block;
+            }
+            .nav-links {
+                display: none;
+                position: absolute;
+                top: 75px;
+                left: 0;
+                width: 100%;
+                padding: 20px 5%;
+                background: var(--background);
+                flex-direction: column;
+                gap: 15px;
+            }
+            .nav-links.open {
+                display: flex;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- NAVBAR -->
+    <header>
+        <nav class="container">
+            <a href="#home" class="logo">Annisa<span>.</span></a>
+            <button class="menu-btn" id="menuBtn">
+                ☰ Menu
+            </button>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="#home">Beranda</a></li>
+                <li><a href="#about">Tentang Saya</a></li>
+                <li><a href="#skills">Keahlian</a></li>
+                <li><a href="#projects">Proyek</a></li>
+                <li><a href="#contact">Kontak</a></li>
+            </ul>
+        </nav>
+    </header>
+    <!-- BERANDA -->
+    <main>
+        <section class="container hero" id="home">
+            <div>
+                <div class="subtitle">Personal Portfolio</div>
+                <h1>
+                    Halo, saya<br>
+                    <span class="gradient">
+                        Annisa Rahmawati
+                    </span>
+                </h1>
+                <p>
+                    Mahasiswa Sistem Informasi yang tertarik
+                    pada teknologi, pengembangan website,
+                    dan pemanfaatan sistem informasi untuk
+                    membantu pekerjaan sehari-hari.
+                </p>
+                <div class="buttons">
+                    <a href="#projects" class="button primary">
+                        Lihat Proyek ↘
+                    </a>
+                    <a href="#contact" class="button secondary">
+                        Hubungi Saya
+                    </a>
+                </div>
+            </div>
+            <div class="profile-card">
+                <div class="avatar">AR</div>
+                <h2>Annisa Rahmawati</h2>
+                <p>Information Systems Student</p>
+                <p>Belajar • Berkembang • Berkarya</p>
+            </div>
+        </section>
+        <!-- TENTANG SAYA -->
+        <section id="about">
+            <div class="container">
+                <div class="section-title">
+                    <div class="subtitle">Perkenalan</div>
+                    <h2>Tentang <span class="gradient">Saya</span></h2>
+                    <p>
+                        Sedikit cerita tentang diri saya,
+                        minat, dan hal yang sedang saya pelajari.
+                    </p>
+                </div>
+                <div class="about-grid">
+                    <div class="card">
+                        <h3>Hai, salam kenal!</h3>
+                        <p>
+                            Saya Annisa Rahmawati, mahasiswa
+                            Sistem Informasi. Saya senang mempelajari
+                            bagaimana teknologi dapat digunakan
+                            untuk membuat proses kerja lebih praktis,
+                            teratur, dan efisien.
+                            Saat ini saya terus mengembangkan
+                            pengetahuan di bidang pemrograman,
+                            pengolahan data, dan perancangan sistem.
+                        </p>
+                    </div>
+                    <div class="biodata">
+                        <div>
+                            <strong>NAMA</strong>
+                            <span>Annisa Rahmawati</span>
+                        </div>
+                        <div>
+                            <strong>BIDANG</strong>
+                            <span>Sistem Informasi</span>
+                        </div>
+                        <div>
+                            <strong>MINAT</strong>
+                            <span>Web & Data</span>
+                        </div>
+                        <div>
+                            <strong>FOKUS</strong>
+                            <span>Terus belajar</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- KEAHLIAN -->
+        <section id="skills">
+            <div class="container">
+                <div class="section-title">
+                    <div class="subtitle">Yang Saya Pelajari</div>
+                    <h2>Keahlian & <span class="gradient">Minat</span></h2>
+                    <p>
+                        Beberapa bidang yang sedang saya pelajari.
+                    </p>
+                </div>
+                <div class="skills-grid">
+                    <div class="skill">
+                        <span>💻</span>
+                        HTML & CSS
+                    </div>
+                    <div class="skill">
+                        <span>🗃️</span>
+                        Database MySQL
+                    </div>
+                    <div class="skill">
+                        <span>📊</span>
+                        Microsoft Excel
+                    </div>
+                    <div class="skill">
+                        <span>🧩</span>
+                        Analisis Sistem
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- PROYEK -->
+        <section id="projects">
+            <div class="container">
+                <div class="section-title">
+                    <div class="subtitle">Karya Pilihan</div>
+                    <h2>Proyek <span class="gradient">Saya</span></h2>
+                    <p>
+                        Contoh proyek yang dapat disesuaikan
+                        dengan karya yang pernah dibuat.
+                    </p>
+                </div>
+                <div class="projects-grid">
+                    <div class="project">
+                        <div class="project-icon">📋</div>
+                        <h3>Monitoring Produksi</h3>
+                        <p>
+                            Konsep sistem pencatatan hasil produksi,
+                            data NG, tanggal shift, dan nama operator
+                            agar laporan lebih mudah dikelola.
+                        </p>
+                        <span class="tag">Sistem Informasi</span>
+                    </div>
+                    <div class="project">
+                        <div class="project-icon">🌐</div>
+                        <h3>Website Portofolio</h3>
+                        <p>
+                            Website pribadi untuk memperkenalkan
+                            diri, menampilkan minat, keahlian,
+                            dan proyek yang pernah dikerjakan.
+                        </p>
+                        <span class="tag">HTML • CSS • JavaScript</span>
+                    </div>
+                    <div class="project">
+                        <div class="project-icon">📈</div>
+                        <h3>Pengolahan Data</h3>
+                        <p>
+                            Contoh pemanfaatan spreadsheet
+                            untuk merapikan data, membuat rekap,
+                            dan membantu penyusunan laporan.
+                        </p>
+                        <span class="tag">Microsoft Excel</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- KONTAK -->
+        <section id="contact">
+            <div class="container">
+                <div class="contact-box">
+                    <div class="subtitle">Mari Terhubung</div>
+                    <h2>
+                        Terima kasih sudah
+                        <span class="gradient">berkunjung!</span>
+                    </h2>
+                    <p>
+                        Untuk informasi atau kolaborasi,
+                        silakan hubungi saya melalui email.
+                    </p>
+                    <!-- Ganti dengan email kamu -->
+                    <a
+                        href="mailto:emailkamu@example.com"
+                        class="button primary"
+                    >
+                        Kirim Email ✉
+                    </a>
+                </div>
+            </div>
+        </section>
+    </main>
+    <!-- FOOTER -->
+    <footer>
+        <div class="container">
+            © <span id="year"></span>
+            Annisa Rahmawati. All Rights Reserved.
+        </div>
+    </footer>
+    <script>
+        // Menu navigasi untuk HP
+        const menuBtn = document.getElementById("menuBtn");
+        const navLinks = document.getElementById("navLinks");
+        menuBtn.addEventListener("click", function () {
+            navLinks.classList.toggle("open");
+        });
+        // Tutup menu setelah salah satu menu diklik
+        navLinks.querySelectorAll("a").forEach(function (link) {
+            link.addEventListener("click", function () {
+                navLinks.classList.remove("open");
+            });
+        });
+        // Tahun otomatis pada footer
+        document.getElementById("year").textContent =
+            new Date().getFullYear();
+    </script>
+</body>
+</html>
